@@ -104,7 +104,7 @@ cd BankApplication
 ### Step 2: Build the Project
 ```bash
 # On Linux
-mvn clean install
+mvnw clean install
 # On Windows:
 mvnw.cmd clean install
 ```
@@ -115,7 +115,7 @@ Database configuration is in `src/main/resources/application.properties`. The ap
 ### Step 4: Run the Application
 ```bash
 # On Linux
-mvn spring-boot:run
+mvnw spring-boot:run
 # On Windows:
 mvnw.cmd spring-boot:run
 ```

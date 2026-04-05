@@ -91,29 +91,34 @@ body {
 		</div>
 	</div>
 	<div class="main">
-		<div class="col-md-6 col-sm-12">
-			<div class="login-form">
-				<c:if test="${param.logout != null}">
-					<div class="alert alert-success">
-						<small>You have been successfully logged out.</small>
-					</div>
-				</c:if>
-				<form:form action="login" method="post" modelAttribute="user">
-					<div class="form-group">
-						<label>User Name</label> <input type="text" name="username"
-							class="form-control" placeholder="User Name">
-					</div>
-					<div class="form-group">
-						<label>Password</label> <input type="password" name="password"
-							class="form-control" placeholder="Password">
-						<form:errors path="user.password" />
-						<c:if test="${param.error != null}">
-							<p class="text-danger"><small>Invalid username and
-									password.</small></p>
-						</c:if>
-					</div>
-					<button type="submit" class="btn btn-black">Login</button>
-				</form:form>
+		<div class="container">
+			<div class="mt-3 mx-3 alert alert-secondary position-absolute" style="top: 10px; z-index: 9999;" role="alert">
+				This is a demo project. Use credentials: User Name: <samp>manager</samp> / <samp>clerk</samp> Password: Same as username
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="login-form">
+					<c:if test="${param.logout != null}">
+						<div class="alert alert-success">
+							<small>You have been successfully logged out.</small>
+						</div>
+					</c:if>
+					<form:form action="login" method="post" modelAttribute="user">
+						<div class="form-group">
+							<label>User Name</label> <input type="text" name="username"
+								class="form-control" placeholder="User Name">
+						</div>
+						<div class="form-group">
+							<label>Password</label> <input type="password" name="password"
+								class="form-control" placeholder="Password">
+							<form:errors path="user.password" />
+							<c:if test="${param.error != null}">
+								<p class="text-danger"><small>Invalid username and
+										password.</small></p>
+							</c:if>
+						</div>
+						<button type="submit" class="btn btn-black">Login</button>
+					</form:form>
+				</div>
 			</div>
 		</div>
 	</div>

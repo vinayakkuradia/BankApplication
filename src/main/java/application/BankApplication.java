@@ -10,6 +10,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import application.layer.service.contract.UserService;
 import application.layer.service.contract.facade.BankFacade;
 
+// For adding users to database
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import application.security.entities.AuthRole;
+import application.security.entities.User;
+
 @SpringBootApplication
 @EnableTransactionManagement
 public class BankApplication implements CommandLineRunner {
@@ -31,9 +37,12 @@ public class BankApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		PasswordEncoder pe = new BCryptPasswordEncoder();
-//		userService.addUser(new User("manager", pe.encode("manager"), AuthRole.ADMIN.getRole()));
-//		userService.addUser(new User("clerk", pe.encode("clerk"), AuthRole.USER.getRole()));
+		User existingUser = userService.findByUsername("manager");
+		if (existingUser == null) {
+			PasswordEncoder pe = new BCryptPasswordEncoder();
+			userService.addUser(new User("manager", pe.encode("manager"), AuthRole.ADMIN.getRole()));
+			userService.addUser(new User("clerk", pe.encode("clerk"), AuthRole.USER.getRole()));
+		}
 	}
 
 }
